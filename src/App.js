@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
+import {Button,message} from 'antd';
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {  };
+    handleClick = () => {
+        message.success('lll');
     }
     render() {
         return (
             <div>
-                App
+                <Button onClick = {this.handleClick} type =  "primary">dianji</Button>
             </div>
         );
     }
