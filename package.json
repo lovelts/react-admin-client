@@ -2,16 +2,25 @@
   "name": "react-admin-client",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
   "dependencies": {
+    "@antv/data-set": "^0.10.2",
     "antd": "^3.25.0",
     "axios": "^0.19.1",
+    "babel-loader": "^8.0.6",
     "babel-plugin-import": "^1.13.0",
+    "bizcharts": "^3.5.2",
     "customize-cra": "^0.9.1",
+    "draftjs-to-html": "^0.9.1",
+    "echarts": "^4.6.0",
+    "echarts-for-react": "^2.0.15-beta.1",
+    "html-to-draftjs": "^1.5.0",
+    "jsonp": "^0.2.1",
     "less": "^3.10.3",
-    "less-loader": "^5.0.0",
     "react": "^16.11.0",
     "react-app-rewired": "^2.1.5",
     "react-dom": "^16.11.0",
+    "react-draft-wysiwyg": "^1.14.4",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0"
   },
@@ -36,5 +45,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy":""
+  "proxy": "",
+  "devDependencies": {
+    "less-loader": "^5.0.0"
+  }
 }

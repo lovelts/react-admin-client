@@ -1,62 +1,62 @@
 import React, { Component } from 'react'
 import { Form, Icon, Input, Button } from 'antd'
-import {message} from 'antd'
-import {Redirect} from 'react-router-dom'
+import { message } from 'antd'
+import { Redirect } from 'react-router-dom'
 
 import logo from '../../assets/images/logo.png'
 import './login.less'
-import {reqLogin} from '../../api'
-import storageUtils from '../../utils/storageUtils' 
+import { reqLogin } from '../../api'
+import storageUtils from '../../utils/storageUtils'
 import memoryUtils from '../../utils/memoryUtils'
 
 
 export class Login extends Component {
     handleSubmit = e => {
         e.preventDefault();
-        this.props.form.validateFields(async (err, {username,password}) => {
+        this.props.form.validateFields(async (err, { username, password }) => {
             // 检验成功
             if (!err) {
-               const result = await reqLogin(username,password);
-               if(result.status === 0){
-                    const user = result.data; 
+                const result = await reqLogin(username, password);
+                if (result.status === 0) {
+                    const user = result.data;
                     storageUtils.saveUser(user);
                     memoryUtils.user = user;//第二种获取值的方式
                     this.props.history.replace('/');
                     message.success("登录成功");
-               }else{
-                    message.error("用户名或密码错误"+result.msg);
-               }
+                } else {
+                    message.error("用户名或密码错误" + result.msg);
+                }
             } else {
-              console.log('检验失败!')
+                console.log('检验失败!')
             }
-          });
-      
+        });
+
     };
     validatorPwd = (rule, value, callback) => {
         value = value.trim();
-        if(this.props.form.getFieldValue('username')){
-        if (!value) {
-            callback('密码必须输入');
-        } else if (value.length < 6) {
-            callback('密码必须大于6位');
-        } else if (value.length > 16) {
-            callback('密码必须小于16位');
-        } else if (!/^[A-z0-9_]+$/.test(value)) {
-            callback('用户名必须不能含有特殊字符（下划线除外）')
-        } else {
-            callback();
+        if (this.props.form.getFieldValue('username')) {
+            if (!value) {
+                callback('密码必须输入');
+            } else if (value.length <= 4) {
+                callback('密码必须大于4位');
+            } else if (value.length > 16) {
+                callback('密码必须小于16位');
+            } else if (!/^[A-z0-9_]+$/.test(value)) {
+                callback('用户名必须不能含有特殊字符（下划线除外）')
+            } else {
+                callback();
+            }
         }
-    }
-    else{
-        callback('请输入用户名');
-    }
+        else {
+            callback('请输入用户名');
+        }
 
     }
     render() {
         const { getFieldDecorator } = this.props.form;
         const user = memoryUtils.user;
-        if(user._id){
-           return <Redirect to='/'/>
+        if (user._id) {
+            return <Redirect to='/' />
         }
         return (
 
@@ -92,10 +92,9 @@ export class Login extends Component {
                             {
                                 getFieldDecorator('password', {
                                     rules: [
-                                        { required: true, whitespace: true, message: '密码是必须的' },
 
                                         {
-                                            validator: this.validatePwd
+                                            validator: this.validatorPwd
                                         }
                                     ]
                                 })(

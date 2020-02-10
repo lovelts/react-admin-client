@@ -29,7 +29,7 @@ export class Admin extends Component {
                 </Sider>
                 <Layout>
                     <Header />
-                    <Content style={{ backgroundColor: 'white' }}>
+                    <Content style={{ backgroundColor: 'white',margin:'20px' }}>
                         <Switch>
                             <Route path='/home' component={Home} />
                             <Route path='/category' component={Category} /> 
