@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
+import {message} from 'antd';
+import {HashRouter,Switch,Route} from 'react-router-dom'; 
 
+import Admin from './pages/admin/admin.jsx';
+import Login from './pages/login/login';
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {  };
+    handleClick = () => {
+        message.success('lll');
     }
     render() {
         return (
-            <div>
-                App
-            </div>
+            <HashRouter>
+                <Switch>
+                    <Route  path = '/login' component = {Login}/>
+                    <Route  path = '/' component = {Admin}/>
+
+                </Switch>
+            
+            </HashRouter>
         );
     }
 }
