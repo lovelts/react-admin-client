@@ -113,6 +113,8 @@ export class Login extends Component {
                         </Form.Item>
                     </Form>
                 </div>
+                {/* <img  src="/public/备案图标.png" alt=""/> */}
+                <a style={{color:'black',textAlign:'center',position:"absolute",bottom:'px',left:'50%'}} href="http://www.beian.miit.gov.cn">©豫ICP备19038737号</a>
             </div>
         )
     }
